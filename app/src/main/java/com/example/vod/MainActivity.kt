@@ -1,47 +1,25 @@
-package com.example.vod
+package com.example.vod.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.tv.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.tv.material3.ExperimentalTvMaterial3Api
-import androidx.tv.material3.Surface
-import com.example.vod.ui.theme.VODTheme
+import com.example.vod.data.repository.TodoRepositoryImpl
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalTvMaterial3Api::class)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Create the repository instance.
+        // In a production app, you might use dependency injection instead.
+        val repository = TodoRepositoryImpl()
+
+        // Create the ViewModel and pass the repository to it.
+        val viewModel = TodoViewModel(repository)
+
         setContent {
-            VODTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    shape = RectangleShape
-                ) {
-                    Greeting("Android")
-                }
-            }
+            // Set up the UI by passing the ViewModel to our composable screen.
+            TodoScreen(viewModel = viewModel)
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    VODTheme {
-        Greeting("Android")
     }
 }

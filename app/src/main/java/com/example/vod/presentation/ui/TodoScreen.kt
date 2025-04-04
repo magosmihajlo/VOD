@@ -6,7 +6,7 @@ It uses a LazyColumn to efficiently display each item.
 TodoItem is another composable that displays the properties of a single to-do.
  */
 
-package com.example.vod.presentation
+package com.example.vod.presentation.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.vod.domain.model.Todo
+import com.example.vod.presentation.viewmodel.TodoViewModel
 
 @Composable
 fun TodoScreen(viewModel: TodoViewModel) {

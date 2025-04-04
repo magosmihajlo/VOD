@@ -8,11 +8,11 @@ It stores the list of to-dos in a MutableStateFlow so that the UI can observe ch
 The ViewModel separates the UI from data-fetching logic.
  */
 
-package com.example.vod.presentation
+package com.example.vod.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.vod.data.repository.TodoRepository
+import com.example.vod.domain.repository.TodoRepository
 import com.example.vod.domain.model.Todo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

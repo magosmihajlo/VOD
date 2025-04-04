@@ -13,6 +13,7 @@ package com.example.vod.data.repository
 import com.example.vod.data.remote.RetrofitInstance
 import com.example.vod.data.remote.dto.TodoDto
 import com.example.vod.domain.model.Todo
+import com.example.vod.domain.repository.TodoRepository
 
 class TodoRepositoryImpl : TodoRepository {
 

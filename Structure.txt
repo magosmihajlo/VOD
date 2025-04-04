@@ -1,0 +1,19 @@
+app/src/main/java/com/example/todo/  
+├── data/  
+│   └── remote/  
+│       ├── dto/  
+│       │   └── TodoDto.kt        (Data Transfer Object for network)  
+│       ├── TodoApi.kt           (Retrofit API interface)  
+│       └── RetrofitInst.kt      (Retrofit instance/provider)  
+├── repository/  
+│   ├── TodoRepository.kt       (Repository interface or class)  
+│   └── TodoRepositoryImpl.kt   (Repository implementation)  
+├── domain/  
+│   └── model/  
+│       └── Todo.kt             (Domain model class)  
+├── presentation/  
+│   ├── TodoScreen.kt          (UI Composable for displaying Todo list)  
+│   └── TodoViewModel.kt       (ViewModel for Todo UI)  
+├── ui/  
+│   └── theme/                 (UI theme files for Compose)  
+└── MainActivity.kt            (Activity, entry point of UI)  

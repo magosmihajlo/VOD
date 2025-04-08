@@ -66,4 +66,10 @@ dependencies {
 
     // (Optional) OkHttp logging interceptor for debugging network calls
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+    // Scalars
+    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
+
+    implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
+
 }

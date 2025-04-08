@@ -11,8 +11,6 @@ This separation allows your app to evolve independently of the data source.
 package com.example.vod.domain.model
 
 data class Todo(
-    val userId: Int,
-    val id: Int,
-    val title: String,
-    val completed: Boolean
+    val value: String
 )
+

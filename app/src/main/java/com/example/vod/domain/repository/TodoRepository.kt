@@ -7,5 +7,6 @@ package com.example.vod.domain.repository
 import com.example.vod.domain.model.Todo
 
 interface TodoRepository {
-    suspend fun getTodos(): List<Todo>
+    suspend fun getTodo(): Todo
 }
+

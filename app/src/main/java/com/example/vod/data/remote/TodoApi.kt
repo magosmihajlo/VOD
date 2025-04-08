@@ -11,9 +11,14 @@ package com.example.vod.data.remote
 import com.example.vod.data.remote.dto.TodoDto
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Headers
+import retrofit2.http.Query
 
 interface TodoApi {
 
-    @GET("/todos")
-    suspend fun getTodos(): Response<List<TodoDto>>
+    @GET("v3/auid")
+    @Headers("x-api-key: YW5va2ktcHJvZC1hcHA.k7pj7XeKY0yD8moz")
+    suspend fun getTodo(@Query("deviceId") deviceId: String): Response<String>
 }
+
+

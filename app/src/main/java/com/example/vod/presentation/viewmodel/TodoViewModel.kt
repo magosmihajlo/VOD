@@ -22,17 +22,18 @@ class TodoViewModel(
     private val repository: TodoRepository
 ) : ViewModel() {
 
-    private val _todoList = MutableStateFlow<List<Todo>>(emptyList())
-    val todoList = _todoList.asStateFlow()
+    private val _todo = MutableStateFlow<Todo>(Todo(""))
+    val todo = _todo.asStateFlow()
 
     init {
-        fetchTodos()
+        fetchTodo()
     }
 
-    private fun fetchTodos() {
+    private fun fetchTodo() {
         viewModelScope.launch {
-            val todos = repository.getTodos()
-            _todoList.value = todos
+            val todoFromRepo = repository.getTodo()
+            _todo.value = todoFromRepo
         }
     }
 }
+

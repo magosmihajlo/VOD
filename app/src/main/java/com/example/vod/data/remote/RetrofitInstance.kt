@@ -10,7 +10,7 @@ package com.example.vod.data.remote
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object RetrofitInstance {
 
@@ -19,14 +19,14 @@ object RetrofitInstance {
     }
 
     private val client = OkHttpClient.Builder()
-        // Uncomment to enable logging
+        // Uncomment the next line to enable logging of network requests/responses
         // .addInterceptor(loggingInterceptor)
         .build()
 
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://stream-stage.aistrm.net:5200/")
+            .addConverterFactory(ScalarsConverterFactory.create())
             .client(client)
             .build()
     }
@@ -35,3 +35,5 @@ object RetrofitInstance {
         retrofit.create(TodoApi::class.java)
     }
 }
+
+

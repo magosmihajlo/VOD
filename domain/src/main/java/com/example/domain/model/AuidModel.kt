@@ -1,6 +1,6 @@
 package com.example.domain.model
 
-data class VodModel(
+data class AuidModel(
     val value: String
 )
 

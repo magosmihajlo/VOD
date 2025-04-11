@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import com.example.data.remote.dto.VodDto
+import com.example.data.remote.dto.AuidDto
 import com.example.data.remote.dto.VodDtoDeserializer
 import com.google.gson.GsonBuilder
 
@@ -21,7 +21,7 @@ object RetrofitInstance {
         .build()
 
     private val gson = GsonBuilder()
-        .registerTypeAdapter(VodDto::class.java, VodDtoDeserializer())
+        .registerTypeAdapter(AuidDto::class.java, VodDtoDeserializer())
         .setLenient()
         .create()
 

@@ -3,9 +3,8 @@ package com.example.data.repository
 import android.content.Context
 import android.util.Log
 import com.example.data.remote.RetrofitInstance
-import com.example.data.remote.dto.VodDto
-
-import com.example.domain.model.VodModel
+import com.example.data.remote.dto.mapToDomain
+import com.example.domain.model.AuidModel
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -13,35 +12,34 @@ import java.io.IOException
 
 class VodRepositoryImpl(private val context: Context) : com.example.domain.repository.VodRepository {
 
-    override suspend fun getVod(): VodModel {
+    override suspend fun getVod(): AuidModel {
         val advertisingId = getAdvertisingId(context)
         Log.d("AdvertisingID", "Using Advertising ID for API call: $advertisingId")
 
         try {
             val response = RetrofitInstance.api.getTodo(advertisingId)
 
-            val vodDto = response.body()
-
             return if (response.isSuccessful) {
-                //val todoDto = response.body()
-                if (vodDto != null) {
-                    Log.d("ServerResponse", "API Success with DTO: $vodDto")
-                    mapToDomain(vodDto)
+                val auidDto = response.body()
+                if (auidDto != null) {
+                    Log.d("ServerResponse", "API Success with DTO: $auidDto")
+                    auidDto.mapToDomain()
+                    //mapToDomain(vodDto)
                 } else {
                     Log.e("ServerResponse Null", "API Success but Response body is null.")
-                    VodModel(value = "")
+                    AuidModel(value = "")
                 }
             } else {
                 val errorBody = response.errorBody()?.string() ?: "No error body"
                 Log.e("ServerResponse API err", "API Error: Code=${response.code()}, Message=${response.message()}, Body='$errorBody'")
-                VodModel(value = "")
+                AuidModel(value = "")
             }
         } catch (e: IOException) {
             Log.e("TodoRepository Network", "Network IO Exception during API call", e)
-            return VodModel(value = "")
+            return AuidModel(value = "")
         } catch (e: Exception) {
             Log.e("TodoRepository Generic", "Generic Exception during API call", e)
-            return VodModel(value = "")
+            return AuidModel(value = "")
         }
     }
 
@@ -57,9 +55,5 @@ class VodRepositoryImpl(private val context: Context) : com.example.domain.repos
                 ""
             }
         }
-    }
-
-    private fun mapToDomain(dto: VodDto): VodModel {
-        return VodModel(value = dto.valueString)
     }
 }

@@ -3,7 +3,7 @@ package com.example.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.repository.VodRepository
-import com.example.domain.model.VodModel
+import com.example.domain.model.AuidModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ class VodViewModel(
 ) : ViewModel() {
 
     private val _vod = MutableStateFlow(
-        VodModel("")
+        AuidModel("")
     )
     val vod = _vod.asStateFlow()
 

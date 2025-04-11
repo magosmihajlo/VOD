@@ -3,10 +3,10 @@ package com.example.data.remote.dto
 import com.google.gson.*
 import java.lang.reflect.Type
 
-class VodDtoDeserializer : JsonDeserializer<VodDto> {
-    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): VodDto {
+class VodDtoDeserializer : JsonDeserializer<AuidDto> {
+    override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): AuidDto {
         // The response is just a string, like: "Hello"
         val rawValue = json.asString
-        return VodDto(valueString = rawValue)
+        return AuidDto(valueString = rawValue)
     }
 }
